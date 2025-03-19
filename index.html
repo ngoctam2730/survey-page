@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Survey</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 500px;
+            margin: 20px auto;
+            text-align: center;
+        }
+        input, button {
+            display: block;
+            width: 100%;
+            margin: 10px 0;
+            padding: 8px;
+        }
+        #submitBtn {
+            background-color: #0077B5; /* LinkedIn blue */
+            color: white;
+            border: none;
+            cursor: not-allowed;
+            opacity: 0.5;
+        }
+        #submitBtn.enabled {
+            cursor: pointer;
+            opacity: 1;
+        }
+        .linkedin-follow {
+            margin: 20px 0;
+        }
+    </style>
+</head>
+<body>
+    <h2>Student Survey</h2>
+    <p>Complete the form and follow us on LinkedIn!</p>
+    
+    <form id="surveyForm" action="#" method="POST">
+        <input type="text" name="name" placeholder="Your Name" required>
+        <input type="email" name="email" placeholder="Your Student Email" required>
+        
+        <div class="linkedin-follow">
+            <script src="https://platform.linkedin.com/in.js" type="text/javascript">lang: en_US</script>
+            <script type="IN/FollowCompany" data-id="99396802" data-counter="top"></script>
+        </div>
+        
+        <button type="submit" id="submitBtn" disabled>Submit</button>
+    </form>
+
+    <script>
+        // Simulate follow detection (LinkedIn doesn't provide a direct callback)
+        const submitBtn = document.getElementById('submitBtn');
+        const form = document.getElementById('surveyForm');
+        
+        // Enable submit button after a delay (assuming they clicked Follow)
+        setTimeout(() => {
+            submitBtn.classList.add('enabled');
+            submitBtn.disabled = false;
+        }, 5000); // 5 seconds delay to encourage following
+
+        // Handle form submission
+        form.addEventListener('submit', (e) => {
+            e.preventDefault();
+            alert('Thanks for completing the survey and following us!');
+            // Here you’d add code to save form data (e.g., to a free backend)
+            form.reset();
+        });
+    </script>
+</body>
+</html>
